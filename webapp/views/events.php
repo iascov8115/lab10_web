@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/base_up.html';
-require_once __DIR__ . '/../utils/dbconnect.php';
+require_once __DIR__ . '/../services/dbconnect.php';
 require_once __DIR__ . '/header.php';
 
 if (isset($conn) && empty($conn)) {
@@ -25,7 +25,7 @@ foreach ($events as $event) {
     $table .= "<p class=\"w-25 text-center\">{$event[1]}</p>";
     $table .= "<p class=\"w-25 text-center\">{$event[2]}</p>";
     $table .= "<p class=\"w-25 text-center\">{$event[3]}</p>";
-    $table .= "<a class=\"w-25 text-center\" href=\"record?event={$event[4]}\"><img width=30 src=\"../static/assets/record.svg\"></a>";
+    $table .= "><img width=30 src=></a>";
     $table .= "</div>";
 }
 $table .= "</section>";

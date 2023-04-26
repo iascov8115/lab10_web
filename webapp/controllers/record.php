@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../utils/dbconnect.php';
+require_once __DIR__ . '/../services/dbconnect.php';
 $query = "SELECT parent_id from parent where parent_name='{$_POST['name']}' and parent_email = '{$_POST['email']}'";
 $parent_id = $conn->query($query)->fetch_all();
 if (empty($parent_id)) {

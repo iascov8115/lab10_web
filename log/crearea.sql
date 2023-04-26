@@ -23,7 +23,7 @@ create table parent(
 create table child(
     child_id int not null AUTO_INCREMENT primary key,
     child_name varchar(255) not null,
-    child_birth date not null,
+    child_year_of_birth int not null,
     parent_id int not null,
     foreign key (parent_id) references parent(parent_id)
 );
@@ -63,7 +63,8 @@ create table event_record(
 );
 
 
-insert into parent(parent_name, parent_email) values("Maria Lungu", 'lunmaria@gmail.com');
+insert into parent(parent_name, parent_email) values("Ivan Ivanov", 'ivanov@gmail.com');
 insert into manager(manager_login, manager_password) values("toadski@gmail.com", 'ca03e4b0d6a8a08f400264b5e45fb441');
+insert into manager(manager_login, manager_password) values("danilaaskov1@gmail.com", '21232f297a57a5a743894a0e4a801fc3');
 insert into event(event_name, manager_id, event_location, event_price) values('Origami', 1, 'Bulevardul Dimitrie Cantemir 6', 65);
 insert into event(event_name, manager_id, event_location, event_price) values('Clay crafting', 1, 'Strada Mihai Viteazul 10/1', 110);
