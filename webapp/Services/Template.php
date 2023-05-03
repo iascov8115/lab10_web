@@ -1,5 +1,7 @@
 <?php
-namespace services;
+namespace Services;
+use Exception;
+
 class Template {
     private $templatePath;
     private $vars;
@@ -18,19 +20,11 @@ class Template {
         $path = $this->templatePath . $templateFile;
 
         if (file_exists($path)) {
-            // Merge global and local variables
             $vars = array_merge($this->vars, $variables);
 
-            // Start output buffering
             ob_start();
-
-            // Extract variables for the template
             extract($vars);
-
-            // Include the template file
             include $path;
-
-            // Get the contents of the output buffer
             $output = ob_get_clean();
         } else {
             throw new Exception("Template not found: {$path}");

@@ -1,16 +1,24 @@
 <?php
-
-require_once __DIR__.'/services/Template.php';
-require_once __DIR__.'/services/CraftiDB.php';
-require_once __DIR__ . '/services/Router.php';
-require_once __DIR__ . '/controllers/HomeController.php';
-require_once __DIR__ . '/controllers/EventsController.php';
+require_once 'autoload.php';
+session_start();
+use Services\Router;
+use Controllers\HomeController;
+use Controllers\AdminController;
 
 $router = new Router();
+$router->get('/', [HomeController::class, "index"]);
+$router->get('/record', [HomeController::class, "createNewEventRecord"]);
+$router->post('/record', [HomeController::class, "createNewEventRecord"]);
+$router->get('/admin', [AdminController::class, "index"]);
+$router->post('/admin', [AdminController::class, "index"]);
+$router->get('/logout', [AdminController::class, "logout"]);
 
-$router->get('/', 'HomeController@index');
-$router->get('/record', 'EventsController@createEventRecord');
-$router->post('/record/submit', 'EventsController@saveEventRecord');
-$router->get('/events', 'EventsController@index');
+if (isset($_SESSION['manager'])) {
+    $router->get('/admin/update', [AdminController::class, "update"]);
+    $router->get('/admin/delete', [AdminController::class, "delete"]);
+    $router->post('/admin/update', [AdminController::class, "update"]);
+    $router->get('/admin/insert', [AdminController::class, "insert"]);
+    $router->post('/admin/insert', [AdminController::class, "insert"]);
+}
 
 $router->dispatch($_SERVER['REQUEST_URI']);

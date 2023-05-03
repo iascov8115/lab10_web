@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../static/css/index.css">
 </head>
 <body>
+<header class="header">
+    <a href="/" class="logo">Crafti</a>
+</header>
 <main><?= $main?></main>
+<footer>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, tempora?</footer>
 </body>
 </html>

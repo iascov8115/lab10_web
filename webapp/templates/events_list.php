@@ -1,19 +1,15 @@
-<div class="table">
-    <div class="row">
-        <div class="event-name cell">Событые</div>
-        <div class="event-address cell">Адрес</div>
-        <div class="event-price cell">Цена</div>
-        <div class="event-manager cell">Пиши нам</div>
-        <div class="event-action cell">Записаться</div>
+<div class="event_list list">
+    <?php foreach ($events as $event) : ?>
+    <div class="event">
+        <h1 class="event_heading"><?= $event[5] ?></h1>
+        <div class="event_body">
+            <div class="event_address">Адрес: <?= $event[1] ?></div>
+            <div class="event_price">Цена: <span class="amount"><?=$event[7] ?></span> MDL</div>
+            <div class="event_date">Дата: <?= $event[3] ?></div>
+            <div class="event_time">Время: <?= substr($event[4], 0, -3) ?></div>
+            <div class="event_free_spaces">Количество свободных мест: <?= $event[6] ?></div>
+        </div>
+        <a class="button" href="/record?id=<?=$event[0]?>">Записаться</a>
     </div>
-    <?php
-    foreach ($events as $event) { ?>
-    <div class="row">
-        <div class="event-name cell"><?= $event[0] ?></div>
-        <div class="event-address cell"><?= $event[1] ?></div>
-        <div class="event-price cell"><?= $event[2] . 'MDL' ?></div>
-        <div class="event-manager cell"><?= $event[3] ?></div>
-        <div class="event-action cell"><a href="/record?id=<?=$event[4]?>"><img src="../static/images/record.png" alt="Записаться"></a></div>
-    </div>
-    <?php } ?>
+    <?php endforeach; ?>
 </div>

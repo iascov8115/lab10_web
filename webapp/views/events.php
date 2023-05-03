@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/base_up.html';
-require_once __DIR__ . '/../services/dbconnect.php';
+require_once __DIR__ . '/../Services/dbconnect.php';
 require_once __DIR__ . '/header.php';
 
 if (isset($conn) && empty($conn)) {
